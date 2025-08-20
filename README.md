@@ -51,7 +51,7 @@ Controllers (HotelController, BookingController) expose JSON endpoints
 
 
 # 🗂 Project Structure 
-
+# Backend Structure
 src/
   main/
     java/
@@ -67,8 +67,28 @@ src/
         BookingController.java                   
     resources/
       application.properties                     
-pom.xml  
+pom.xml 
 
+# Frontend Structure
+hotel-booking-frontend/
+│
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── hotel-list/
+│   │   │   │   ├── hotel-list.component.ts
+│   │   │   │   ├── hotel-list.component.html
+│   │   │   │   └── hotel-list.component.css
+│   │   │   └── booking-list/
+│   │   │       ├── booking-list.component.ts
+│   │   │       ├── booking-list.component.html
+│   │   │       └── booking-list.component.css
+│   │   ├── services/
+│   │   │   ├── hotel.service.ts
+│   │   │   └── booking.service.ts
+│   │   ├── app-routing.module.ts
+        ├── app.module.ts
+    
 
 # 📦 Dependencies 
 Likely present in pom.xml:
@@ -125,7 +145,7 @@ Build Tool: Maven
 
 Architecture: Layered (Controller → Service → Repository → Database)
 
-API Format: REST, JSON
+API Format: REST, JSON , ANGULAR
 
 Testing: JUnit + Spring Boot Test (if implemented)
 
