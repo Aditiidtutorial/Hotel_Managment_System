@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <h2>Bookings</h2>
+
+  <!-- Form -->
+  <form (ngSubmit)="addBooking()" class="row g-2">
+    <div class="col-md-3">
+      <input [(ngModel)]="newBooking.customerName" name="customer" placeholder="Customer Name" class="form-control" required />
+    </div>
+    <div class="col-md-2">
+      <input type="number" [(ngModel)]="newBooking.roomNumber" name="room" placeholder="Room #" class="form-control" required />
+    </div>
+    <div class="col-md-3">
+      <select [(ngModel)]="newBooking.hotel.id" name="hotelId" class="form-select" required>
+        <option value="" disabled>Select Hotel</option>
+        <option *ngFor="let h of hotels" [value]="h.id">{{h.name}}</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <input type="date" [(ngModel)]="newBooking.checkInDate" name="checkIn" class="form-control" required />
+    </div>
+    <div class="col-md-2">
+      <input type="date" [(ngModel)]="newBooking.checkOutDate" name="checkOut" class="form-control" required />
+    </div>
+    <div class="col-md-12 mt-2">
+      <button type="submit" class="btn btn-primary w-100">Add Booking</button>
+    </div>
+  </form>
+
+  <hr/>
+
+  <!-- Table -->
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Room</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Hotel</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of bookings">
+        <td>{{b.id}}</td>
+        <td>{{b.customerName}}</td>
+        <td>{{b.roomNumber}}</td>
+        <td>{{b.checkInDate}}</td>
+        <td>{{b.checkOutDate}}</td>
+        <td>{{b.hotel?.name || ('Hotel #' + b.hotel?.id)}}</td>
+        <td><button class="btn btn-danger btn-sm" (click)="deleteBooking(b.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

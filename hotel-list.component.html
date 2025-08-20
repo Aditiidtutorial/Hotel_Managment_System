@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2>Hotels</h2>
+
+  <!-- Form -->
+  <form (ngSubmit)="addHotel()" class="row g-2">
+    <div class="col-md-3">
+      <input [(ngModel)]="newHotel.name" name="name" placeholder="Hotel Name" class="form-control" required />
+    </div>
+    <div class="col-md-3">
+      <input [(ngModel)]="newHotel.location" name="location" placeholder="Location" class="form-control" required />
+    </div>
+    <div class="col-md-3">
+      <input type="number" [(ngModel)]="newHotel.totalRooms" name="rooms" placeholder="Total Rooms" class="form-control" required />
+    </div>
+    <div class="col-md-3">
+      <button type="submit" class="btn btn-primary w-100">Add Hotel</button>
+    </div>
+  </form>
+
+  <hr/>
+
+  <!-- Table -->
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Rooms</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let h of hotels">
+        <td>{{h.id}}</td>
+        <td>{{h.name}}</td>
+        <td>{{h.location}}</td>
+        <td>{{h.totalRooms}}</td>
+        <td><button class="btn btn-danger btn-sm" (click)="deleteHotel(h.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
